@@ -19,9 +19,9 @@ class DrawDatesFinder {
     public LocalDateTime upcomingDrawDate() {
         LocalDateTime ticketDate = LocalDateTime.now(clock);
         if (ticketDate.getHour() < DRAW_HOUR) {
-            return ticketDate.with(TemporalAdjusters.nextOrSame(DRAW_DAY_OF_WEEK));
+            return ticketDate.with(TemporalAdjusters.nextOrSame(DRAW_DAY_OF_WEEK)).withHour(DRAW_HOUR).withMinute(0).withSecond(0).withNano(0);
         } else {
-            return ticketDate.with(TemporalAdjusters.next(DRAW_DAY_OF_WEEK));
+            return ticketDate.with(TemporalAdjusters.next(DRAW_DAY_OF_WEEK)).withHour(DRAW_HOUR).withMinute(0).withSecond(0).withNano(0);
         }
     }
 }
