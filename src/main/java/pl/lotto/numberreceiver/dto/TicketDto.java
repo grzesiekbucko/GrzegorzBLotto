@@ -4,5 +4,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public record TicketDto(UUID uuid, LocalDateTime drawDate, List<Integer> numbers) {
+public record TicketDto(String uuid, LocalDateTime drawDate, List<Integer> numbers) {
 }

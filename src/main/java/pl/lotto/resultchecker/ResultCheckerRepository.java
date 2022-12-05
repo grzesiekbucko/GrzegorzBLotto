@@ -1,14 +1,21 @@
 package pl.lotto.resultchecker;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.stereotype.Repository;
+
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
 
-public interface ResultCheckerRepository {
+@Repository
+public interface ResultCheckerRepository extends MongoRepository<TicketResult, String>, ResultCheckerRepositoryCustom {
 
     void insertAll(List<TicketResult> list);
 
-    List<TicketResult> findAllByDate(LocalDateTime date);
+    List<TicketResult> findByLotteryDate(LocalDateTime lotteryDate);
 
-    TicketResult findById(UUID id);
+    @Query
+    Optional<TicketResult> findByTickedId(String tickedId);
+
 }

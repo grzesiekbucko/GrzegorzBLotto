@@ -16,8 +16,8 @@ class Draw {
     }
 
     WinningNumbers startDrew() {
-        return new WinningNumbers(LocalDateTime.now(clock), generateNumbers());
-    }
+        return new WinningNumbers(LocalDateTime.now(clock).withMinute(0).withSecond(0).withNano(0), generateNumbers());
+        }
 
     private List<Integer> generateNumbers() {
         Random rng = new Random();

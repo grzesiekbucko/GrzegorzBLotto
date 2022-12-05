@@ -21,7 +21,7 @@ public class NumbersGeneratorFacadeTest {
     @DisplayName("should return generated numbers on specific day")
     public void should_return_generated_numbers_on_specific_day(LocalDateTime lotteryDate) {
         //given
-        Clock clock = Clock.fixed(lotteryDate.toInstant(ZoneOffset.of("Europe/Warsaw")), ZoneId.of("Europe/Warsaw"));
+        Clock clock = Clock.fixed(lotteryDate.toInstant(ZoneOffset.of("+1")), ZoneId.of("+1"));
         NumbersGeneratorRepositoryTestImpl repositoryTest = new NumbersGeneratorRepositoryTestImpl();
         NumbersGeneratorFacade numbersGeneratorFacade = new NumbersGeneratorFacadeConfiguration().createModuleForTests(clock, repositoryTest);
         //when

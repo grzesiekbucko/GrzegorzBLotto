@@ -1,14 +1,19 @@
 package pl.lotto.numbersgenerator;
-import org.springframework.data.jpa.repository.JpaRepository;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-interface NumbersGeneratorRepository extends JpaRepository<WinningNumbers, Long> {
+public interface NumbersGeneratorRepository extends MongoRepository<WinningNumbers, Long> {
 
     WinningNumbers save(WinningNumbers winningNumbers);
 
     List<WinningNumbers> findAll();
 
+    WinningNumbers findByDate(LocalDateTime date);
 
 }

@@ -29,22 +29,21 @@ public class NumberReceiverFacade {
             return failure(validate.getMessage());
         }
         LocalDateTime nearestDrawDate = drawDatesFinder.upcomingDrawDate();
-        UUID uuid = UUID.randomUUID();
-        String userLotteryId = uuid.toString();
-        LotteryTicket lotteryTicket = new LotteryTicket(uuid, nearestDrawDate, numbersFromUser);
+        String userLotteryId = UUID.randomUUID().toString();
+        LotteryTicket lotteryTicket = new LotteryTicket(userLotteryId, nearestDrawDate, numbersFromUser);
         repository.save(lotteryTicket);
         return success(nearestDrawDate, userLotteryId);
     }
 
     public List<List<Integer>> retrieveAllNumbersForGivenDate(LocalDateTime date) {
-        List<LotteryTicket> result = repository.findAllByDate(date);
+        List<LotteryTicket> result = repository.findAllByNearestDrawDate(date);
         return result.stream()
                 .map(lotteryTicket -> lotteryTicket.numbersFromUser)
                 .toList();
     }
 
     public List<TicketsForGivenDateDto> retrieveAllTicketForGivenDate(LocalDateTime date) {
-        return repository.findAllByDate(date)
+        return repository.findAllByNearestDrawDate(date)
                 .stream()
                 .map(LotteryTicket -> new TicketsForGivenDateDto(LotteryTicket.uuid, LotteryTicket.numbersFromUser))
                 .toList();

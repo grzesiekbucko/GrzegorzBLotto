@@ -24,22 +24,27 @@ public class NumbersGeneratorRepositoryTestImpl implements NumbersGeneratorRepos
     }
 
     @Override
+    public <S extends WinningNumbers> List<S> saveAll(Iterable<S> entities) {
+        return null;
+    }
+
+    @Override
+    public Optional<WinningNumbers> findById(Long aLong) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
+    }
+
+    @Override
     public List<WinningNumbers> findAll() {
         return null;
     }
 
     @Override
-    public List<WinningNumbers> findAll(Sort sort) {
-        return null;
-    }
-
-    @Override
-    public Page<WinningNumbers> findAll(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public List<WinningNumbers> findAllById(Iterable<Long> longs) {
+    public Iterable<WinningNumbers> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -74,62 +79,22 @@ public class NumbersGeneratorRepositoryTestImpl implements NumbersGeneratorRepos
     }
 
     @Override
-    public <S extends WinningNumbers> List<S> saveAll(Iterable<S> entities) {
+    public List<WinningNumbers> findAll(Sort sort) {
         return null;
     }
 
     @Override
-    public Optional<WinningNumbers> findById(Long aLong) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Long aLong) {
-        return false;
-    }
-
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public <S extends WinningNumbers> S saveAndFlush(S entity) {
+    public Page<WinningNumbers> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends WinningNumbers> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public <S extends WinningNumbers> S insert(S entity) {
         return null;
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<WinningNumbers> entities) {
-
-    }
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public WinningNumbers getOne(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public WinningNumbers getById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public WinningNumbers getReferenceById(Long aLong) {
+    public <S extends WinningNumbers> List<S> insert(Iterable<S> entities) {
         return null;
     }
 
@@ -167,4 +132,12 @@ public class NumbersGeneratorRepositoryTestImpl implements NumbersGeneratorRepos
     public <S extends WinningNumbers, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
+
+    @Override
+    public WinningNumbers findByDate(LocalDateTime date) {
+        return new WinningNumbers(date, database.get(date));
+    }
+
+
 }
+
